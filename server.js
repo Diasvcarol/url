@@ -24,7 +24,7 @@ app.post('/encurtar', (requisicao, resposta) => {
     const dadosURL = requisicao.body
     const palavra = gerarPalavraAleatoria()
     bancoDeDados[palavra] = dadosURL.url
-    resposta.send('http://localhost:3001/' + palavra)
+    resposta.json(url, 'http://localhost:3001/' + palavra)
 })
 
 app.get('/:palavra', (requisicao, resposta) => {
