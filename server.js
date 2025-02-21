@@ -4,9 +4,7 @@ const app = express()
 
 app.use(express.json())
 
-app.get('/', (_, resposta) => {
-    resposta.send('Hello World!')
-})
+app.use('/', express.static('public'))
 
 function gerarPalavraAleatoria() {
     const alfabeto = 'abcdefghijklmnopqrstuvwxyz'

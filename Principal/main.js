@@ -1,9 +1,16 @@
-const getUrlOriginal = document.getElementById("urlOriginal");
-const resultadoDiv = document.getElementById("resultado");
+const getUrlOriginal = document.querySelector('#urlOriginal').value
+const resultadoDiv = document.querySelector('#resultado')
 
 function cortarUrl(){
-	fetch();
-	method: "GET"
+	console.log(getUrlOriginal())
+	fetch('/encurtador', {
+		method: 'POST',
+		body: JSON.stringify({ url: getUrlOriginal() }),
+		headers: { 'Content-Type': 'application/json' }
+	}).then(res => res.json())
+	.then((resposta) => {
+		resultadoDiv.innerHTML = `<p>URL nova: <a href = "${resposta.url}" target = "_blank"> ${resposta.url}</a></p>`
+	})
 
 }
 
