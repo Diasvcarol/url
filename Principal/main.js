@@ -1,4 +1,4 @@
-const getUrlOriginal = document.querySelector('#urlOriginal').value
+const getUrlOriginal = () => document.querySelector('#urlOriginal').value
 const resultadoDiv = document.querySelector('#resultado')
 
 function cortarUrl(){

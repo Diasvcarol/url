@@ -4,7 +4,7 @@ const app = express()
 
 app.use(express.json())
 
-app.use('/', express.static('public'))
+app.use('/', express.static('Principal'))
 
 function gerarPalavraAleatoria() {
     const alfabeto = 'abcdefghijklmnopqrstuvwxyz'
@@ -18,11 +18,11 @@ function gerarPalavraAleatoria() {
 
 const bancoDeDados = {}
 
-app.post('/encurtar', (requisicao, resposta) => {
+app.post('/encurtador', (requisicao, resposta) => {
     const dadosURL = requisicao.body
     const palavra = gerarPalavraAleatoria()
     bancoDeDados[palavra] = dadosURL.url
-    resposta.json(url, 'http://localhost:3001/' + palavra)
+    resposta.json({ url: 'http://localhost:3001/' + palavra })  
 })
 
 app.get('/:palavra', (requisicao, resposta) => {
